@@ -10,9 +10,12 @@ async function uploadFile(buffer) {
 
     const result = await imagekit.files.upload({
         file: buffer.toString('base64'),
-        fileName: "image.jpg"
+        fileName: "image.jpg",
+        folder : "LearnLoop"
     });
     return result;
 }
+
+
 
 module.exports = uploadFile;

@@ -11,12 +11,12 @@ const courseSchema = new mongoose.Schema({
     },
     instructor: {
         type: mongoose.Schema.Types.ObjectId,   
-        ref: 'User',        
+        ref: 'user',        
         required: true,
     },
     students: [{    
          type: mongoose.Schema.Types.ObjectId,
-         ref: 'User',        
+         ref: 'user',        
     }],
     price: {
         type: Number,
@@ -24,6 +24,7 @@ const courseSchema = new mongoose.Schema({
     },
     category: {
         type: String,
+        enum :["webdevelopment","ai","cloud","appdevelopment","embedded"],
         required: true,
     },
     image: {

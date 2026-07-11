@@ -106,26 +106,8 @@ async function verifyEmail(req, res) {
         message: "Email verified successfully"
     });
 }
-
-async function instructorRegister(req, res) {
     
-    const token = req.cookies.token;
-
-    if (!token) {
-        return res.status(401).json({ message: "Unauthorized" });
-    }
-    const decoded = jwt.verify(token, process.env.JWT_SECRET);
-    
-    const isUserExist = await userModel.findByIdAndUpdate(decoded.id , { role: "instructor" });
-
-    if (!isUserExist) {
-        return res.status(400).json({ error: "User not found" });
-    }
-
-    res.status(200).json({ message: "Instructor registered successfully" });
-
-}    
 
 
 
-module.exports = {userRegister ,userLogin,userLogout ,verifyEmail, instructorRegister}
+module.exports = {userRegister ,userLogin,userLogout ,verifyEmail}

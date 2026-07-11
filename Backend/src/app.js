@@ -12,10 +12,12 @@ app.use(morgan('dev'));
 /* rotues */
 const authRouter = require('./routes/auth.routes')
 const courseRouter = require('./routes/course.routes')
+const instructorRouter = require('./routes/instructor.routes')
 
 
 app.use("/api/auth",authRouter)
 app.use("/api/course",courseRouter)
+app.use("/api/instructor",instructorRouter)
 
 
 module.exports = app

@@ -1,7 +1,7 @@
 const userModel = require('../models/user.model');
 const jwt = require('jsonwebtoken');
 const courseModel = require('../models/course.model');
-
+const uploadFile = require('../services/storage.service');
 
 async function instructorRegister(req, res) {
     
@@ -24,19 +24,22 @@ async function instructorRegister(req, res) {
 
 async function uploadCourse(req, res) {
 
-    const { title, description, price, category, image } = req.body;
+    const { title, description, price, category } = req.body;
+    const image = req.file;
 
     if (!title || !description || !price || !category || !image) {
         return res.status(400).json({ message: "All fields are required" });
     }
 
     try {
+        const result = await uploadFile(image.buffer)
+
         const newCourse = await courseModel.create({
             title,
             description,
             price,
             category,
-            image,
+            image : result.url,
             instructor: req.user._id
         });
         res.status(201).json({ message: "Course uploaded successfully", course: newCourse });

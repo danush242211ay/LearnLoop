@@ -10,6 +10,7 @@ const upload = multer({storage: multer.memoryStorage()})
 router.post("/register",instructorController.instructorRegister);
 router.post('/upload', authMiddleware.authInstructor,upload.single('image'), instructorController.uploadCourse);
 router.get("/courses",authMiddleware.authInstructor,instructorController.getInstructorCourses);
-
+router.post('/uploadLesson/:courseId', authMiddleware.authInstructor,upload.single('image'), instructorController.uploadLessons);
+router.get("/lessons/:courseId",authMiddleware.authInstructor,instructorController.getInstructorLessons);
 
 module.exports = router;

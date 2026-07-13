@@ -14,3 +14,4 @@ router.post('/uploadLesson/:courseId', authMiddleware.authInstructor,upload.sing
 router.get("/lessons/:courseId",authMiddleware.authInstructor,instructorController.getInstructorLessons);
 
 module.exports = router;
+//

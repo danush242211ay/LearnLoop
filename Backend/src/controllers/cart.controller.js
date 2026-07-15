@@ -62,4 +62,18 @@ async function deleteItems(req, res) {
     });
 }   
 
-module.exports = { addToCart , getCartItems , deleteItems}
+async function deleteAllItems(req, res) {
+    try {
+        await cartModel.deleteMany({});
+
+        return res.status(200).json({
+            message: "All items deleted successfully"
+        });
+    } catch (error) {
+        return res.status(500).json({
+            message: "Server Error"
+        });
+    }
+}
+
+module.exports = { addToCart , getCartItems , deleteItems , deleteAllItems}

@@ -14,12 +14,12 @@ app.use(morgan('dev'));
 const authRouter = require('./routes/auth.routes')
 const courseRouter = require('./routes/course.routes')
 const instructorRouter = require('./routes/instructor.routes')
-const enrollmentRouter = require('./routes/enrollment.routes')
+const cartRouter = require('./routes/cart.routes')
 
 app.use("/api/auth",authRouter)
 app.use("/api/course",courseRouter)
 app.use("/api/instructor",instructorRouter)
-app.use("/api/enroll",enrollmentRouter)
+app.use("/api/enroll",cartRouter)
 
 
 module.exports = app

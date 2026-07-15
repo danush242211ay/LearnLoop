@@ -38,6 +38,7 @@ Backend
  *otp Model
  *course Model
  *lesson Model
+ *cart Model
 
 -Instructor role
  
@@ -69,4 +70,11 @@ Backend
  *Get ALL Lessons
   -In particular course, but access depend on preview status given by particular instructor
  
+-Cart routes
+
+ *Add Items to Cart
+ *Delete Items in Cart
+ *Clear ALL Items in Cart
+ *Reflect Add Items in Cart
+
 

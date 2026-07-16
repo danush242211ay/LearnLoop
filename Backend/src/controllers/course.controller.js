@@ -12,14 +12,42 @@ async function getCourses(req, res) {
 }
 
 async function getLessons(req, res) {
-    const courseId = req.params.courseId;
+    const { courseId } = req.params;
 
-    try{
-        const lesson = await lessonModel.find( {course : courseId});
-        res.status(200).json({ lesson });
+    try {
+
+        // Check if the user has purchased the course
+        const enrollment = await enrollmentModel.findOne({
+            learner: req.user._id,
+            course: courseId,
+            paymentStatus: "completed"
+        });
+
+        let lessons;
+
+        if (enrollment) {
+            // Purchased user -> return all lessons
+            lessons = await lessonModel.find({ course: courseId }).sort({ order: 1 });
+        } else {
+            // Not purchased -> return only preview lessons
+            lessons = await lessonModel.find({
+                course: courseId,
+                isPreview: true
+            }).sort({ order: 1 });
+        }
+
+        return res.status(200).json({
+            success: true,
+            lessons
+        });
+
     } catch (error) {
         console.error(error);
-        res.status(500).json({ message: "Server error" });
+
+        return res.status(500).json({
+            success: false,
+            message: "Server Error"
+        });
     }
 }    
 

@@ -15,11 +15,13 @@ const authRouter = require('./routes/auth.routes')
 const courseRouter = require('./routes/course.routes')
 const instructorRouter = require('./routes/instructor.routes')
 const cartRouter = require('./routes/cart.routes')
+const paymentRouter = require('./routes/payment.routes')
 
 app.use("/api/auth",authRouter)
 app.use("/api/course",courseRouter)
 app.use("/api/instructor",instructorRouter)
-app.use("/api/enroll",cartRouter)
+app.use("/api/cart",cartRouter)
+app.use("/api/payment",paymentRouter)
 
 
 module.exports = app

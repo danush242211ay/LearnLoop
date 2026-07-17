@@ -25,6 +25,8 @@ async function enrollment(req,res){
 
         cart.courses = [];
         await cart.save();
+
+        res.status(200).json({ message: "Enrolled successfully" });
     }catch(err){
         res.status(400).json({ message : "enrollment failed"})
     }

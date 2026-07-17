@@ -106,8 +106,19 @@ async function verifyEmail(req, res) {
         message: "Email verified successfully"
     });
 }
+
+async function getMe(req, res) {
+    res.status(200).json({
+        user: {
+            id: req.user._id,
+            email: req.user.email,
+            role: req.user.role,
+            verified: req.user.verified,
+        }
+    });
+}
     
 
 
 
-module.exports = {userRegister ,userLogin,userLogout ,verifyEmail}
+module.exports = {userRegister ,userLogin,userLogout ,verifyEmail , getMe}

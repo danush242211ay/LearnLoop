@@ -1,0 +1,96 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    border-color: theme('colors.hairline');
+  }
+
+  html {
+    color-scheme: dark;
+  }
+
+  body {
+    @apply bg-canvas text-ink font-sans antialiased;
+    background-image:
+      radial-gradient(60rem 30rem at 15% -10%, rgba(124, 108, 240, 0.10), transparent 60%),
+      radial-gradient(50rem 26rem at 100% 0%, rgba(242, 169, 59, 0.07), transparent 55%);
+    background-attachment: fixed;
+  }
+
+  ::selection {
+    background: rgba(242, 169, 59, 0.28);
+    color: #fff;
+  }
+
+  :focus-visible {
+    outline: 2px solid #F2A93B;
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #2A2733;
+    border-radius: 999px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #372F63;
+  }
+}
+
+@layer components {
+  .eyebrow {
+    @apply font-mono text-[11px] tracking-[0.16em] uppercase text-muted;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-full bg-amber px-5 py-2.5
+           font-sans font-semibold text-[#1A1305] transition-all duration-200
+           hover:bg-amber-soft hover:shadow-glow active:scale-[0.98]
+           disabled:opacity-40 disabled:pointer-events-none;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 rounded-full border border-hairline
+           bg-surface px-5 py-2.5 font-sans font-semibold text-ink transition-all duration-200
+           hover:border-violet/50 hover:bg-surface2 active:scale-[0.98]
+           disabled:opacity-40 disabled:pointer-events-none;
+  }
+
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-2 rounded-full px-4 py-2 font-sans
+           font-medium text-muted transition-colors duration-200 hover:text-ink hover:bg-surface2
+           disabled:opacity-40 disabled:pointer-events-none;
+  }
+
+  .card {
+    @apply rounded-xl2 border border-hairline bg-surface shadow-card;
+  }
+
+  .input-field {
+    @apply w-full rounded-xl border border-hairline bg-surface2 px-4 py-3 text-ink
+           placeholder:text-faint transition-colors duration-200
+           focus:border-amber/60 focus:outline-none;
+  }
+
+  .label-field {
+    @apply mb-1.5 block text-sm font-medium text-muted;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.001ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.001ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}

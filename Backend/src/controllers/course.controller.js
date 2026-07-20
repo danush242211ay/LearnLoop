@@ -1,5 +1,6 @@
 const courseModel = require('../models/course.model');
 const lessonModel = require('../models/lesson.model');
+const enrollmentModel = require('../models/enrollment.model')
 
 async function getCourses(req, res) {
     try {

@@ -32,7 +32,7 @@ async function addToCart(req, res) {
 }
 
 async function getCartItems(req,res){
-    const cart = await cartModel.find({ learner: req.user._id });
+    const cart = await cartModel.findOne({ learner: req.user._id }).populate("courses");
     
     res.status(200).json({ cart });
 }

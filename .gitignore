@@ -2,8 +2,6 @@ Backend/.env
 Backend/node_modules
 Frontend/node_modules
 Frontend/.env
-PATCHES.md
-LearnLoop-Backend-Patched
 # Logs
 logs
 *.log
